@@ -6,11 +6,6 @@ class Router
 # http://localhost:3001/users/9999999
 
   def route
-    def parse_params
-      params = {}
-      params[:resource] = uri_fragments[3]
-      params[:id] = uri_fragments[4]
-      params[:action] = uri_fragments[5]
     # Routes are parsed from top down, so make sure they follow this style
     # /resource/:id/action
     # /resouce/:id
@@ -23,9 +18,10 @@ class Router
     #
     # Put your routes in this array using the get, post, put, delete methods below. (remember order matters)
     [
+      get('/users/:id', UsersController, :show),
+      get('/users', UsersController, :index),
       get('/tweets', TweetsController, :index)
     ].find(&:itself)
-    end
   end
 
   private # No need to edit these, but feel free to read them to see how they work

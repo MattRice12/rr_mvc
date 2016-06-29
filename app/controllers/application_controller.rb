@@ -14,6 +14,11 @@ class ApplicationController
     @request[:params]
   end
 
+
+# http://localhost:3001
+# http://localhost:3001/users
+# http://localhost:3001/users/1
+
   def render(body, opts = {})
     {
       body: body,
