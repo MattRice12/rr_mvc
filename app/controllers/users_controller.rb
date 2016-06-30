@@ -13,10 +13,6 @@ class UsersController < ApplicationController
       render User.all[id.to_i - 1].to_json, status: "200 OK"
 
     elsif params[:limit]
-      # render "OMGGGG".to_json, status: "200 OK"
-      # after_ten = params[:limit].to_i
-      render User.all[10].to_json, status: "200 OK"
-
       render User.all[(limit.to_i..(limit.to_i + offset.to_i))].to_json, status: "200 OK"
 
     end
