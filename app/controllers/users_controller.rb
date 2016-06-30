@@ -15,10 +15,10 @@ class UsersController < ApplicationController
     elsif limit
       render User.all[range].to_json, status: "200 OK"
 
-    elsif first_name
-      User.all.each do |user|
-        if user[:first_name] == "Samwise"
-          render user.to_json, status: "200 OK"
+    elsif first
+      User.all.each do |name|
+        if name.first_name[0] == "s"
+          render name.to_json, status: "200 OK"
         end
       end
     end

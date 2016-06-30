@@ -18,7 +18,7 @@ class ApplicationController
     params[:id]
   end
 
-  def first_name
+  def first_let
     params[:first_name]
   end
 
