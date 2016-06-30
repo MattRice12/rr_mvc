@@ -34,13 +34,6 @@ class ApplicationController
     (limit.to_i..(limit.to_i + offset.to_i))
   end
 
-
-# http://localhost:3001
-# http://localhost:3001/users
-# http://localhost:3001/users/1
-
-# http://localhost:3001/users?limit=10&offset=10
-
   def render(body, opts = {})
     {
       body: body,

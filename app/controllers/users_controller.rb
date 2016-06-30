@@ -2,7 +2,14 @@ require_relative '../models/user'
 
 class UsersController < ApplicationController
   def index
-    render User.all.to_json, status: "200 OK"
+    if first_let #selects names starting with first letter of first name
+      users = User.all.select { |name| name.first_name[0].downcase == first_let }
+      render users.to_json, status: "200 OK"
+    elsif limit # selects range of limit and offset
+      render User.all[range].to_json, status: "200 OK"
+    else
+      render User.all.to_json, status: "200 OK"
+    end
   end
 
   def show
@@ -11,17 +18,6 @@ class UsersController < ApplicationController
 
     elsif id # selects user at position stated in :id
       render User.all[id.to_i - 1].to_json, status: "200 OK"
-
-    elsif limit
-      render User.all[range].to_json, status: "200 OK"
-
-    elsif first_let
-      users =  User.all.select { |name| name.first_name[0].downcase == first_let }
-
-      render users.to_json, status: "200 OK"
     end
   end
 end
-
-
-# Given this request http://localhost:3001/users?first_name=s I should see ALL users from where first_name starts with s.
