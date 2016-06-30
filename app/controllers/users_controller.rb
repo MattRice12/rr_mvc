@@ -15,12 +15,10 @@ class UsersController < ApplicationController
     elsif limit
       render User.all[range].to_json, status: "200 OK"
 
-    elsif first
-      User.all.each do |name|
-        if name.first_name[0] == "s"
-          render name.to_json, status: "200 OK"
-        end
-      end
+    elsif first_let
+      users =  User.all.select { |name| name.first_name[0].downcase == first_let }
+
+      render users.to_json, status: "200 OK"
     end
   end
 end
