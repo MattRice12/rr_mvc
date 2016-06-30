@@ -14,10 +14,28 @@ class ApplicationController
     @request[:params]
   end
 
+  def id
+    params[:id]
+  end
+
+  def limit
+    params[:limit]
+  end
+
+  def offset
+    params[:offset]
+  end
+
+  def range
+    [limit..(limit + range)]
+  end
+
 
 # http://localhost:3001
 # http://localhost:3001/users
 # http://localhost:3001/users/1
+
+# http://localhost:3001/users?limit=10&offset=10
 
   def render(body, opts = {})
     {
