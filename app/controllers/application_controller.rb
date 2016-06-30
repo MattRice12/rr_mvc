@@ -26,8 +26,12 @@ class ApplicationController
     params[:offset]
   end
 
+  def limit
+    params[:first_name]
+  end
+
   def range
-    [limit..(limit + range)]
+    (limit.to_i..(limit.to_i + offset.to_i))
   end
 
 

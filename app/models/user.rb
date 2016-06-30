@@ -33,7 +33,6 @@ class User
      ]
   end
 
-
   def to_json(json_arg = nil)
      {
        first_name: @first_name,
