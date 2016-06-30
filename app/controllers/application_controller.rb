@@ -18,16 +18,16 @@ class ApplicationController
     params[:id]
   end
 
+  def first_name
+    params[:first_name]
+  end
+
   def limit
     params[:limit]
   end
 
   def offset
     params[:offset]
-  end
-
-  def limit
-    params[:first_name]
   end
 
   def range

@@ -15,16 +15,12 @@ class UsersController < ApplicationController
     elsif limit
       render User.all[range].to_json, status: "200 OK"
 
-    elsif params[:first_name]
-      render "Wowwweee!".to_json, status: "200 OK"
-
-      # User.all.each do |user|
-      #   if user[:first_name][0].downcase == "s"
-      #     render user.to_json, status: "200 OK"
-      #   end
-      # end
-
-
+    elsif first_name
+      User.all.each do |user|
+        if user[:first_name] == "Samwise"
+          render user.to_json, status: "200 OK"
+        end
+      end
     end
   end
 end
